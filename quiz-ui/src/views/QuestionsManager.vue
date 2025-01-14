@@ -18,6 +18,9 @@
 import { ref, onMounted } from 'vue';
 import quizApiService from '@/services/QuizApiService';
 import QuestionDisplay from '@/components/QuestionDisplay.vue';
+import { useRouter } from 'vue-router';
+
+const router = useRouter();
 
 // Variables réactives
 const currentQuestion = ref(null);
@@ -56,7 +59,7 @@ function answerClickedHandler(selectedAnswerIndex) {
 // Fonction pour terminer le quiz
 function endQuiz() {
   console.log('Quiz terminé !');
-  // Ajoutez la logique pour afficher les résultats ou rediriger
+  router.push('/score');
 }
 </script>
 
