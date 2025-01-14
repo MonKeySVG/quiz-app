@@ -20,6 +20,8 @@ def hello_world():
 
 # 3 - Get Quiz
 @bp.route('/quiz-info', methods=['GET'])
+@cross_origin(origin='*')  # Permet toutes les origines
+
 def GetQuizInfo():
     try:
         info = get_quiz_info_from_db()
@@ -83,7 +85,6 @@ def add_question():
     
 
 
-
 # 6 - Delete question
 @bp.route('/questions/<int:position>', methods=['DELETE'])
 @cross_origin(origin='*')  # Permet toutes les origines
@@ -98,8 +99,6 @@ def delete_question(position):
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
-
-
 
 
 # 7 - Delete all questions
