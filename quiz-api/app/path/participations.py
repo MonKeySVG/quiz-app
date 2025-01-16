@@ -14,18 +14,18 @@ def add_participation():
         data = request.get_json()
 
         player_name = data.get("playerName")
-        answers = data.get("answers")
+        score = data.get("score")
 
         # Valider les données
-        if not player_name or not answers or not isinstance(answers, list):
+        if not player_name or not score :
             return jsonify({"error": "playerName et answers sont requis"}), 400
         
         # Vérification du nombre de réponses
-        if len(answers) != 10:
-            return jsonify({"error": "La liste des réponses doit contenir exactement 10 éléments"}), 400
+        # if len(answers) != 10:
+        #    return jsonify({"error": "La liste des réponses doit contenir exactement 10 éléments"}), 400
 
         # Calculer le score et enregistrer la participation
-        result = calculate_score_and_save(player_name, answers)
+        result = calculate_score_and_save(player_name, score)
 
         # Répondre avec le score calculé
         return jsonify(result), 200

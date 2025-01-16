@@ -40,4 +40,5 @@ export default {
   async getAllQuestions() {
     return this.call('get', 'questions');
   },
+  
 };

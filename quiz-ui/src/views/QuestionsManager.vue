@@ -18,6 +18,7 @@
 import { ref, onMounted } from 'vue';
 import quizApiService from '@/services/QuizApiService';
 import QuestionDisplay from '@/components/QuestionDisplay.vue';
+import participationStorageService from '@/services/ParticipationStorageService';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
@@ -27,6 +28,7 @@ const currentQuestion = ref(null);
 const currentQuestionPosition = ref(1);
 const totalNumberOfQuestions = ref(0);
 const questions = ref([]);
+let score = 0;
 
 // Fonction appelée à l'initialisation
 onMounted(async () => {
@@ -46,6 +48,12 @@ async function loadQuestionByPosition(position) {
 // Gestionnaire pour les réponses sélectionnées
 function answerClickedHandler(selectedAnswerIndex) {
   console.log(`Réponse sélectionnée : ${selectedAnswerIndex}`);
+
+    // Vérifier si la réponse est correcte et mettre à jour le score
+    if (isAnswerCorrect(selectedAnswerIndex)) {
+        score++;
+        console.log('Score mis à jour :', score);
+    }
   
   // Charger la question suivante ou terminer le quiz
   if (currentQuestionPosition.value < totalNumberOfQuestions.value) {
@@ -56,9 +64,24 @@ function answerClickedHandler(selectedAnswerIndex) {
   }
 }
 
+function isAnswerCorrect(selectedAnswerIndex) {
+    // const currentQuestion = this.questions[this.currentQuestionPosition];
+    console.log('Current question:', currentQuestion);
+    console.log('Current question value:', currentQuestion.value.possibleAnswers[selectedAnswerIndex].isCorrect);
+    if (currentQuestion.value.possibleAnswers[selectedAnswerIndex].isCorrect) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 // Fonction pour terminer le quiz
 function endQuiz() {
   console.log('Quiz terminé !');
+  // push le score et le nom du joueur dans la base de données
+  const playerName = participationStorageService.getPlayerName();
+  participationStorageService.saveParticipationScore(playerName, score);
+  console.log('Nom du joueur:', playerName);
   router.push('/score');
 }
 </script>

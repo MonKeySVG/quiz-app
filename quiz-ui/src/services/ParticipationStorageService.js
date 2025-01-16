@@ -1,3 +1,11 @@
+import axios from "axios";
+import QuizapiService from "./QuizApiService";
+
+const instance = axios.create({
+	baseURL: `${import.meta.env.VITE_API_URL}`,
+  json: true
+});
+
 export default {
     clear() {
       window.localStorage.clear();
@@ -8,8 +16,12 @@ export default {
     getPlayerName() {
       return window.localStorage.getItem("playerName");
     },
-    saveParticipationScore(participationScore) {
-      window.localStorage.setItem("participationScore", participationScore);
+    saveParticipationScore(player_name, score) {
+        const data = {
+            playerName: player_name,
+            score: score
+        };
+        return QuizapiService.call('post', 'participations', data);
     },
     getParticipationScore() {
       return window.localStorage.getItem("participationScore");

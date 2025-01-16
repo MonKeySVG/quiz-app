@@ -1,7 +1,7 @@
 import sqlite3
 from app.models import get_db_connection
 
-def calculate_score_and_save(player_name, answer_ids):
+def calculate_score_and_save(player_name, score):
     """
     Calcule le score et enregistre la participation.
     :param player_name: Nom du joueur.
@@ -9,21 +9,8 @@ def calculate_score_and_save(player_name, answer_ids):
     :return: Un dictionnaire contenant le score calculé et le nom du joueur.
     """
 
-    # Calculer le score
-    score = 0
     with get_db_connection() as conn:
         cursor = conn.cursor()
-
-        for answer_id in answer_ids:
-            cursor.execute("""
-                SELECT is_correct
-                FROM answers
-                WHERE id = ?
-            """, (answer_id,))
-            result = cursor.fetchone()
-
-            if result and result["is_correct"]:  # Si la réponse est correcte
-                score += 1
 
         # Enregistrer la participation
         cursor.execute("""
