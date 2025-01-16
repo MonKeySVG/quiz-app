@@ -6,11 +6,15 @@
 </template>
 
 <script>
+
+import participationStorageService from '@/services/ParticipationStorageService';
+
 export default {
     name: 'ScorePage',
     data() {
+        console.log(participationStorageService.getPlayerScore());
         return {
-            score: 0 // Replace with actual score logic
+            score: participationStorageService.getPlayerScore(),
         };
     }
 };

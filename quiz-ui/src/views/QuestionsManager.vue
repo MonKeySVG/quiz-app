@@ -81,6 +81,7 @@ function endQuiz() {
   // push le score et le nom du joueur dans la base de données
   const playerName = participationStorageService.getPlayerName();
   participationStorageService.saveParticipationScore(playerName, score);
+  participationStorageService.savePlayerScore(score);
   console.log('Nom du joueur:', playerName);
   router.push('/score');
 }
