@@ -1,11 +1,12 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import quizApiService from "@/services/QuizApiService";
+import participationStorageService from "@/services/ParticipationStorageService";
 
 const registeredScores = ref([]);
 
 onMounted(async () => {
-    const response = await quizApiService.getQuizInfo();
+    const response = await participationStorageService.getParticipationScores();
     if (response) {
         registeredScores.value = response.data;
     }

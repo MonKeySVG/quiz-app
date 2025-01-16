@@ -23,9 +23,10 @@ export default {
         };
         return QuizapiService.call('post', 'participations', data);
     },
-    getParticipationScore() {
-      return window.localStorage.getItem("participationScore");
+    getParticipationScores() {
+      return QuizapiService.call('get', 'participations');
     },
+
     savePlayerScore(score) {
       window.localStorage.setItem("Score", score);
     },
