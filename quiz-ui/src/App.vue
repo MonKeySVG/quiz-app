@@ -38,8 +38,6 @@ nav {
   font-size: 1.2rem;
   padding: 6px 24px;
   border-radius: 4px;
-
-  
 }
 
 
