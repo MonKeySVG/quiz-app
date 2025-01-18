@@ -97,14 +97,4 @@ h2 {
     flex: 7;
 }
 
-.button {
-  text-decoration: none;
-  color: white;
-  background-color: #333;
-  font-size: 1.2rem;
-  padding: 6px 24px;
-  border-radius: 4px;
-  margin-top: 40px;
-}
-
 </style>

@@ -2,9 +2,13 @@
   <div class="new-quiz-container">
     <h1>Participer au Quiz</h1>
     <form @submit.prevent="launchNewQuiz">
-      <p>Entrez votre nom :</p>
-      <input type="text" v-model="username" class="form-control" placeholder="Nom du joueur" required />
-      <button type="submit" class="btn btn-primary mt-3" @click="launchNewQuiz">Démarrer le Quiz</button>
+      <h2>Entrez votre nom :</h2>
+      <input type="text" v-model="username" class="form-control shadow" placeholder="Nom du joueur" required />
+      <div>
+        <div class="button-container">
+          <button type="submit" class="button shadow" @click="launchNewQuiz">Démarrer le Quiz</button>
+        </div>
+      </div>
     </form>
 
 
@@ -30,10 +34,45 @@ function launchNewQuiz() {
 </script>
 
 <style>
-.new-quiz-container {
-  max-width: 500px;
-  margin: 0 auto;
-  text-align: center;
-  padding: 2rem;
+  .new-quiz-container {
+    text-align: center;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    
+  }
+
+  input {
+    font-family: 'Clash Display', sans-serif;
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    border: none;
+    width: 50vw;
+    font-size: 2vw;
+    background-color: #333;
+  }
+
+  input:focus {
+    outline: none;
+
+  }
+
+  input:focus::placeholder {
+    opacity: 0;
 }
+
+  button {
+    border: none;
+    font-family: 'Clash Display', sans-serif;
+    padding: 6px 24px;
+
+  }
 </style>
