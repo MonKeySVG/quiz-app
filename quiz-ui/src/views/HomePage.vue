@@ -28,7 +28,7 @@ onMounted(async () => {
 
     <!-- Affichage des scores -->
      <div class="scores-container">
-      <h2>Classement</h2>
+      <h2 class="leaderboard-title">Classement</h2>
 
       <div v-for="scoreEntry in top7Scores" v-bind:key="scoreEntry.date" class="score-entry">
         <div class="player-name">{{ scoreEntry.playerName }}</div>
@@ -62,6 +62,10 @@ h1 {
 h2 {
   font-size: 3vw;
   color: #E46B2D;
+  
+}
+
+.leaderboard-title {
   margin-bottom: 20px;
 }
 

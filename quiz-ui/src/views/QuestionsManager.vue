@@ -1,6 +1,6 @@
 <template>
     <div class="questions-manager">
-      <h1>Question {{ currentQuestionPosition }} / {{ totalNumberOfQuestions }}</h1>
+      <h3>Question {{ currentQuestionPosition }} / {{ totalNumberOfQuestions }}</h3>
       <QuestionDisplay
         v-if="currentQuestion"
         :currentQuestion="currentQuestion"

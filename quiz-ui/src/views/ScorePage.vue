@@ -1,8 +1,12 @@
 <template>
     <div class="score-page">
-        <h1>Score Page</h1>
-        <p>Your score: {{ score }}</p>
+        <h1>Your score:</h1>
+        <h2>{{ score }}</h2>
+        <div class="button-container">
+            <router-link to="/new-quiz" class="button shadow">Rejouer</router-link>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -21,8 +25,15 @@ export default {
 </script>
 
 <style scoped>
-.score-page {
-    text-align: center;
-    margin-top: 50px;
-}
+    .score-page {
+        text-align: center;
+        margin-top: 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .button-container {
+        margin-top: 50px;
+    }
 </style>
